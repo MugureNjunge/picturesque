@@ -1,9 +1,8 @@
-from django.urls import pathfrom
-
-from photoapp import path
+from django.urls import path
 from . import views
 
-urlpattersn = [
+urlpatterns = [
   path('',views.home, name='home'),
+  path('',views.categoryPage , name='image-category'),
 
 ]

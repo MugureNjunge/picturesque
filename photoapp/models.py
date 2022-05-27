@@ -25,7 +25,7 @@ class Category(models.Model):
   
 
 class Image(models.Model):
-  image = ResizedImageField(size=(1000,1000), crop=['middle', 'center'], default='default_square_jpg',upload_to='square')
+  squareImage = ResizedImageField(size=(1000,1000), crop=['middle', 'center'], default='default_square_jpg',upload_to='square')
   imageName = models.TextField(null=True, blank=True) 
   description = models.TextField(null=True, blank=True)
   category = models.ManyToManyField(Category)
