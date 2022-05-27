@@ -103,7 +103,7 @@
       <section class="py-5 text-center container">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h2 class="fw-light"> {{ category.title }}</h2>
+            <h2 class="fw-light"><a href="{% url 'image-category' %}" >{{ category.title }}</a></h2>
             
           </div>
         </div>
@@ -112,31 +112,19 @@
       <div class="album py-5 bg-light">
         <div class="container">
 
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% if images| length >0 %}
-              {% for image in images %}
-                <div class="col">
-                  <div class="card shadow-sm">
+          <div class="row">
+            <img src="{{ image.squareImage.url }}" alt="{{ image.altText }}">
 
-                    <img src="{{ image.squareImage.url }}" alt="{{ image.altText }}">
+          </div>  
 
-                    <div class="card-body">
-                      <p class="card-text">{{ image.shortDescription }} ...<a href="{% url 'image-detail' %}">read more</a></p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <a href="{% url 'image-detail' %}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                        
-                        </div>
-              
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              {% endfor%} 
-            {% else%}   
-              <h4>There are no images uploaded for the selected category.Kindly try a different category</h4>
-            {% endif %}
+          <br>
+
+          <div class="row">
+            <p>{{ image.description }} </p>
+                
           </div>
+            
+                               
         </div>
       </div>
 
