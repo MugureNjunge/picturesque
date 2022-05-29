@@ -121,6 +121,8 @@
         </div>
       </header>
 
+      <!-- <a class="p-2 link-secondary" href="{% url 'image-detail' %}"> img src ="{{ image.squareImage.url }}" </a> -->
+
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
           
@@ -130,7 +132,7 @@
           {% endfor %}
 
           {% for image in images %}
-           <a class="p-2 link-secondary" href="{% url 'image-detail' %}">{{ image.title }}</a>
+           <a class="p-2 link-secondary" href="{% url 'image-detail' %}"> <img class="img-responsive" src="{{ image.squareImage.url }}" alt="{{ image.altText }}"> </a>
           
           {% endfor %}
 
@@ -150,6 +152,36 @@
         </div>
       </div>
     </main>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+          {% for image in images %}
+              <div class="col">
+                <div class="card shadow-sm">
+
+                  <img src="{{ image.squareImage.url }}" alt="{{ image.altText }}">
+                  
+                  <div class="card-body">
+                    <p class="card-text">{{ image.shortDescription }} ...<a href="{% url 'image-detail' %}">read more</a></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="{% url 'image-detail' %}"><button type="button" class="btn btn-sm btn-outline-secondary">Image Details</button></a>
+                      
+                      </div>
+            
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {% endfor%} 
+         
+        </div>
+      </div>
+    </div>
+           
 
     <footer class="blog-footer text-center">
       <p>Copyright @picturesque 2022</p>

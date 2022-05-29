@@ -39,18 +39,32 @@ class Image(models.Model):
   class Meta:
         ordering = ['imageName']    
 
-       
-             
+
+  @classmethod
+  def category(cls):
+        category = cls.objects.filter()
+        return category
+
+  @classmethod
+  def location(cls):
+        location = cls.objects.filter()
+        return location
+     
+  
+  @classmethod
+  def search_by_title(cls,search_term):
+      category = cls.objects.filter(title__icontains=search_term)
+      return category 
+
+  def search_by_title(cls,search_term):
+      location = cls.objects.filter(title__icontains=search_term)
+      return location    
+
+  def search_by_title(cls,search_term):
+      image_id = cls.objects.filter(title__icontains=search_term)
+      return image_id     
 
 
-  # @classmethod
-  # def mombasa(cls):
-  #     mombasa = cls.objects.filter()
-  #     return mombasa
-
-  # @classmethod
-  # def nairobi(cls):
-  #     nairobi = cls.objects.filter()
-  #     return nairobi       
+    
          
   

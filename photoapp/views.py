@@ -16,7 +16,8 @@ def home(request):
 def categoryPage(request):
    
     try:
-        category = Category.objects.get()
+        
+        category = Image.objects.filter()
 
     except:
         category = Category.objects.filter().first()  
@@ -26,8 +27,9 @@ def categoryPage(request):
       x.shortDescription = x.description[:100]
 
     context = {}
-    context['images'] = images
     context['category'] = category
+    context['images'] = images
+   
 
     return render(request, 'main/category.html', context) 
 
@@ -46,7 +48,16 @@ def imageDetailPage(request):
     return render(request, 'main/image.html', context) 
 
 
-    
+# def searchResult(request):
+#     if 'image' in request.GET and request.GET["image"]:
+#         search_term = request.GET.get("image")
+#         searched_images = search_term.split.search_by_title(search_term)
+#         message = f"{search_term}"
+#         return render(request, 'main/search.html',{"message":message,"articles": searched_images})
+
+#     else:
+#         message = "You haven't searched for any term"
+#         return render(request, 'main/search.html',{"message":message})
 
 # def search_results(request):
   

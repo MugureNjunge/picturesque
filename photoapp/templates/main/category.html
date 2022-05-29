@@ -113,16 +113,16 @@
    
 
     <main>
-
-      <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto">
-            <h2 class="fw-light"> {{ category.title }}</h2>
-            
-          </div>
-        </div>
-      </section>
-
+      
+          <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+              <div class="col-lg-6 col-md-8 mx-auto">
+                <h2 class="fw-light"> {{ category.title }}</h2>
+                
+              </div>
+            </div>
+          </section>
+        
       <div class="album py-5 bg-light">
         <div class="container">
 
@@ -132,7 +132,8 @@
                 <div class="col">
                   <div class="card shadow-sm">
 
-                    <img src="{{ image.squareImage.url }}" alt="{{ image.altText }}">
+                    <!-- <img src="{{ image.squareImage.url }}" alt="{{ image.altText }}"> -->
+                    <p><img src="{{ image.squareImage }}" alt="{{ image.altText }}}"></p>
 
                     <div class="card-body">
                       <p class="card-text">{{ image.shortDescription }} ...<a href="{% url 'image-detail' %}">read more</a></p>
