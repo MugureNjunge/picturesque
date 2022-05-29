@@ -3,13 +3,23 @@ from .models import Image, Location, Category
 
 def home(request):
     categories = Category.objects.all()
+    images = Image.objects.all()
+    locations = Location.objects.all()
+
     context = {}
     context['categories'] = categories
+    context['images'] = images
+    context['locations'] = locations
+    
     return render(request, 'main/index.html', context)
 
 def categoryPage(request):
-    
-    category = Category.objects.get()
+   
+    try:
+        category = Category.objects.get()
+
+    except:
+        category = Category.objects.filter().first()  
     
     images = Image.objects.filter (category=category)[:6]
     for x in images:

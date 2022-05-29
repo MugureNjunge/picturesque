@@ -72,14 +72,14 @@
     
   </head>
   <body>
-        
+
     <header>
-      <div class="collapse bg-dark" id="navbarHeader">
+      <div class="collapse bg-info" id="navbarHeader">
         <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-7 py-4">
               <h4 class="text-white">About</h4>
-              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+              <p class="my about">Remember how as little kids we used to have photoalbums for all the memories we made, or even a photoalbum of pictures we came across in magazines or the newspapers? The process of cutting up pictures , piling them into different categories and  gluing them to your album.<br> Remember how fun it used to be to show off our collection? That, was a trip down memory lane.<br>Well this webpage is no different. Only thing is I get to carry my photoalbum with me everywhere.That sure sounds like the dream. So come with me and lets see what I have collected over time. </p>
             </div>
           
           </div>
@@ -98,6 +98,20 @@
       </div>
     </header>
 
+    <div class="container">
+      <header class="blog-header lh-1 py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+         
+          <div class="col-4 text-center">
+            <!-- <a class="blog-header-logo text-dark" href="#">PICTURESQUE</a> -->
+            <h2>MY GALLERY</h2>
+          </div>
+        </div>
+      </header>
+    </div>      
+        
+   
+
     <main>
 
       <section class="py-5 text-center container">
@@ -113,8 +127,8 @@
         <div class="container">
 
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% if images| length >0 %}
-              {% for image in images %}
+            
+            {% for image in images %}
                 <div class="col">
                   <div class="card shadow-sm">
 
@@ -132,24 +146,18 @@
                     </div>
                   </div>
                 </div>
-              {% endfor%} 
-            {% else%}   
-              <h4>There are no images uploaded for the selected category.Kindly try a different category</h4>
-            {% endif %}
+            {% endfor%} 
+           
           </div>
         </div>
       </div>
 
     </main>
 
-    <footer class="text-muted py-5">
+    <footer class="text-muted text-center py-5">
       <div class="container">
-        <p class="float-end mb-1">
-          <a href="#">Back to top</a>
-        </p>
-        <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-      </div>
+        
+        <p>Copyright @picturesque 2022</p>
     </footer>
 
     <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
