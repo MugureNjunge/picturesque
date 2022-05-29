@@ -33,3 +33,17 @@ def imageDetailPage(request):
 
     return render(request, 'main/image.html', context) 
 
+# def search_results(request):
+  
+#     if 'category' in request.GET and request.GET["category"]:
+#         search_term = request.GET.get("category")
+#         searched_categories = Category.search_by_title(search_term)
+#         message = f"{search_term}"
+
+#         return render(request, 'main/search.html',{"message":message,"articles": searched_articles})
+
+#     else:
+#         message = "You haven't searched for any category"
+#         return render(request, 'main/search.html',{"message":message})
+
+
