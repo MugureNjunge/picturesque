@@ -10,7 +10,7 @@ def home(request):
     context['categories'] = categories
     context['images'] = images
     context['locations'] = locations
-    
+
     return render(request, 'main/index.html', context)
 
 def categoryPage(request):
@@ -33,15 +33,20 @@ def categoryPage(request):
 
 def imageDetailPage(request):
 
-    category = Category.objects.get()   
+    category = Category.objects.get()  
+    location = Location.objects.get()  
     image = Image.objects.get()
 
     context = {}
     context['category'] = category
+    context['location'] = location
     context['images'] = image
     
 
     return render(request, 'main/image.html', context) 
+
+
+    
 
 # def search_results(request):
   
