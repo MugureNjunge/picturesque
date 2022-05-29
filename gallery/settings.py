@@ -79,9 +79,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         # 'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': 'gallery',
-        'USER': 'njunge',
-        'PASSWORD': 'Njunge01',
+        'NAME': 'photoapp',
+        'USER': 'maureen',
+        'PASSWORD': 'Mugure01',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -120,14 +120,21 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+
+DJANGORESIZED_DEFAULT_SIZE=[500,500]
+DJANGORESIZED_DEFAULT_QUALITY=75
+DJANGORESIZED_DEFAULT_KEEP_META=True
+DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION=True
+
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
-MEDIA_URL = '/uploads/'
+MEDIA_URL = '/square/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'square')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

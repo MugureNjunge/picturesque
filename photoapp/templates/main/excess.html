@@ -117,7 +117,7 @@
           <section class="py-5 text-center container">
             <div class="row py-lg-5">
               <div class="col-lg-6 col-md-8 mx-auto">
-                <h2 class="fw-light"> {{ location.title }}</h2>
+                <h2 class="fw-light"> {{ category.title }}</h2>
                 
               </div>
             </div>
@@ -166,3 +166,30 @@
       
   </body>
 </html>
+
+
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+  {% for image in images %}
+      <div class="col">
+        <div class="card shadow-sm">
+
+          <img src="{{ image.squareImage.url }}" alt="{{ image.altText }}">
+          
+          <div class="card-body">
+            <p class="card-text">{{ image.description }} ...<a href="{% url 'image-detail' %}">read more</a></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a href="{% url 'image-detail' %}"><button type="button" class="btn btn-sm btn-outline-secondary">Image Details</button></a>
+              
+              </div>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+  {% endfor%} 
+ 
+</div>

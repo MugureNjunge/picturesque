@@ -1,9 +1,6 @@
 from django.db import models
-from django.template.defaultfilters import slugify
 from django_resized import ResizedImageField
-from django.utils import timezone
-from uuid import uuid4
-from django.urls import reverse
+
 
 # Create your models here.
 
@@ -22,49 +19,45 @@ class Category(models.Model):
     
 
 class Image(models.Model):
-  squareImage = ResizedImageField(size=(1000,1000), crop=['middle', 'center'], default='default_square_jpg',upload_to='square')
+#   squareImage = ResizedImageField(size=(1000,1000), crop=['middle', 'center'], default='default_square_jpg',upload_to='square')
+  squareImage = ResizedImageField(size=[2878, 1618], crop=['middle', 'center'], upload_to='square/', blank=True)
   imageName = models.TextField(null=True, blank=True) 
   description = models.TextField(null=True, blank=True)
-  category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
-  location = models.ForeignKey(Location,on_delete=models.CASCADE, null=True)
- 
+  category = models.ForeignKey(Category,on_delete=models.CASCADE)
+  location = models.ForeignKey(Location,on_delete=models.CASCADE)
 
 
   def __str__(self):
-        return self.imageName
-
-  def save_image(self):
-        self.save()  
-
-  class Meta:
-        ordering = ['imageName']    
+      return self.imageName
 
 
   @classmethod
-  def category(cls):
-        category = cls.objects.filter()
-        return category
+  def getImages(cls):
+      allImages = cls.objects.all()
+      return allImages
+      
+  @classmethod
+  def getImagebyId(cls,id):
+      getImage = cls.objects.filter(image_id=id)
+      return getImage
 
   @classmethod
-  def location(cls):
-        location = cls.objects.filter()
-        return location
-     
-  
+  def filterByLocation(cls,id):
+      imageLocation = cls.objects.filter(location_id=id)
+      return imageLocation
+
   @classmethod
-  def search_by_title(cls,search_term):
-      category = cls.objects.filter(title__icontains=search_term)
-      return category 
+  def filter_Category(cls,id):
+      imageCategory = cls.objects.filter(category_id=id)
+      return imageCategory
 
-  def search_by_title(cls,search_term):
-      location = cls.objects.filter(title__icontains=search_term)
-      return location    
-
-  def search_by_title(cls,search_term):
-      image_id = cls.objects.filter(title__icontains=search_term)
-      return image_id     
+  @classmethod
+  def get_category(cls,id):
+      category = cls.objects.filter(category_id=id)
+      return category
 
 
-    
-         
-  
+  @classmethod
+  def searchImage(cls,search_term):
+      searchedImage = cls.objects.filter(category__name__icontains=search_term)
+      return searchedImage

@@ -1,37 +1,49 @@
+from django.http import Http404
 from django.shortcuts import render
-from .models import Image, Location, Category
+from .models import *
+
 
 def home(request):
     categories = Category.objects.all()
     images = Image.objects.all()
     locations = Location.objects.all()
 
-    context = {}
-    context['categories'] = categories
-    context['images'] = images
-    context['locations'] = locations
 
-    return render(request, 'main/index.html', context)
 
-def categoryPage(request):
-   
+    return render(request, 'main/index.html', { "categories" : categories , "images" : images, "locations" : locations} )
+
+def categoryPage(request, category_id):
+
+    categories = Category.objects.all()
+
     try:
         
-        category = Image.objects.filter()
+        categories = Image.get_category(category_id)
 
-    except:
-        category = Category.objects.filter().first()  
+    except Image.DoesNotExist:
+
+        raise Http404()
+        
+        
+
+   
+    # try:
+        
+    #     category = Image.objects.filter()
+
+    # except:
+    #     category = Category.objects.filter().first()  
     
-    images = Image.objects.filter (category=category)[:6]
-    for x in images:
-      x.shortDescription = x.description[:100]
+    # images = Image.objects.filter (category=category)[:6]
+    # for x in images:
+    #   x.shortDescription = x.description[:100]
 
-    context = {}
-    context['category'] = category
-    context['images'] = images
+    # context = {}
+    # context['categories'] = category
+    # context['images'] = images
    
 
-    return render(request, 'main/category.html', context) 
+    return render(request, 'main/category.html', { "categories" : categories} ) 
 
 def imageDetailPage(request):
 

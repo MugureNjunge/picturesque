@@ -3,7 +3,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -70,16 +69,23 @@
     </style>
 
     
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    
+    <link href="{% static 'assets/css/blog.css'%}" rel="stylesheet">
+
   </head>
   <body>
 
     <header>
-      <div class="collapse bg-info" id="navbarHeader">
+      <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-7 py-4">
               <h4 class="text-white">About</h4>
-              <p class="my about">Remember how as little kids we used to have photoalbums for all the memories we made, or even a photoalbum of pictures we came across in magazines or the newspapers? The process of cutting up pictures , piling them into different categories and  gluing them to your album.<br> Remember how fun it used to be to show off our collection? That, was a trip down memory lane.<br>Well this webpage is no different. Only thing is I get to carry my photoalbum with me everywhere.That sure sounds like the dream. So come with me and lets see what I have collected over time. </p>
+              <p class="text-muted">Remember how as little kids we used to have photoalbums for all the memories we made, or even a photoalbum of pictures we came across in magazines or the newspapers? The process of cutting up pictures , piling them into different categories and  gluing them to your album. <br>Remember how fun it used to be to show off our collection? That, was a trip down memory lane, wasn't it?.<br>Well this webpage is no different. Only thing is I get to carry my photoalbum with me everywhere.That sure sounds like the dream. So come with me and lets see what I have collected over time. </p>
             </div>
           
           </div>
@@ -97,72 +103,57 @@
         </div>
       </div>
     </header>
-
+    
+    
     <div class="container">
       <header class="blog-header lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
          
           <div class="col-4 text-center">
-            <!-- <a class="blog-header-logo text-dark" href="#">PICTURESQUE</a> -->
-            <h2>MY GALLERY</h2>
+            <a class="blog-header-logo text-dark" href="#">PICTURESQUE</a>
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="link-secondary" href="#" aria-label="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+            </a>
+            
           </div>
         </div>
       </header>
-    </div>      
-        
-   
 
-    <main>
-      
-          <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-              <div class="col-lg-6 col-md-8 mx-auto">
-                <h2 class="fw-light"> {{ location.title }}</h2>
-                
-              </div>
-            </div>
-          </section>
-        
-      <div class="album py-5 bg-light">
-        <div class="container">
+      <!-- <a class="p-2 link-secondary" href="{% url 'image-detail' %}"> img src ="{{ image.squareImage.url }}" </a> -->
 
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          
+          {% for category in categories %}
+           <a class="p-2 link-secondary" href="{% url 'image-category' category.id %}">{{ category.title }}</a>
+          
+          {% endfor %}
             
-            {% for image in images %}
-                <div class="col">
-                  <div class="card shadow-sm">
-
-                    <!-- <img src="{{ image.squareImage.url }}" alt="{{ image.altText }}"> -->
-                    <p><img src="{{ image.squareImage }}" alt="{{ image.altText }}}"></p>
-
-                    <div class="card-body">
-                      <p class="card-text">{{ image.shortDescription }} ...<a href="{% url 'image-detail' %}">read more</a></p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <a href="{% url 'image-detail' %}"><button type="button" class="btn btn-sm btn-outline-secondary">Image Details</button></a>
-                        
-                        </div>
-              
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            {% endfor%} 
-           
-          </div>
-        </div>
-      </div>
-
-    </main>
-
-    <footer class="text-muted text-center py-5">
-      <div class="container">
         
-        <p>Copyright @picturesque 2022</p>
+        </nav>
+      </div>
+    </div>
+
+  
+    <div class="container-fluid">
+      {% block content %}{% endblock %}
+    </div>
+   
+           
+
+    <footer class="blog-footer text-center">
+      <p>Copyright @picturesque 2022</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
     </footer>
-
-    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
-
+    
+  
       
   </body>
 </html>
+  
+
+  
