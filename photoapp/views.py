@@ -48,16 +48,16 @@ def imageDetailPage(request):
     return render(request, 'main/image.html', context) 
 
 
-# def searchResult(request):
-#     if 'image' in request.GET and request.GET["image"]:
-#         search_term = request.GET.get("image")
-#         searched_images = search_term.split.search_by_title(search_term)
-#         message = f"{search_term}"
-#         return render(request, 'main/search.html',{"message":message,"articles": searched_images})
+def searchResult(request):
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = search_term.split.search_by_title(search_term)
+        message = f"{search_term}"
+        return render(request, 'main/search.html',{"message":message,"articles": searched_images})
 
-#     else:
-#         message = "You haven't searched for any term"
-#         return render(request, 'main/search.html',{"message":message})
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'main/search.html',{"message":message})
 
 # def search_results(request):
   
