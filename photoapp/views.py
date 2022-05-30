@@ -8,12 +8,18 @@ def home(request):
     categories = Category.objects.all() 
     locations = Location.objects.all()
 
+
+    return render(request, 'main/index.html', { "categories" : categories , "images" : images, "locations" : locations} )
+
+def imagePage(request, image_id):
+    
     try:
-        images = Image.getImages()
+        image = Image.objects.get(id=image_id)
+
     except Image.DoesNotExist:
         raise Http404()
 
-    return render(request, 'main/index.html', { "categories" : categories , "images" : images, "locations" : locations} )
+    return render(request, 'main/image.html', {"image" : image})        
 
 def categoryPage(request, category_id):
 
@@ -40,29 +46,6 @@ def locationPage(request, location_id):
         raise Http404()
         
     return render(request, 'main/location.html', { "locations" : locations} )     
-
-def imagePage(request, image_id):
-
-    images = Image.objects.all()
-
-    try:
-        images = Image.get_findImage(image_id)
-
-    except Image.DoesNotExist:
-        raise Http404
-    return render(request, 'main/image.html', {'images': images} )     
-
-def imageDetailPage(request, image_id):
-    pass
-  
-    # descriptions = Image.description.objects.all()
-
-    # try:
-    #     descriptions = Image.get_findImage(image_id)
-
-    # except Image.DoesNotExist:
-    #     raise Http404
-    # return render(request, 'main/image.html', {'descriptions': descriptions} )          
 
 
 def search(request):
