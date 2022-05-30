@@ -8,14 +8,11 @@ def home(request):
     images = Image.objects.all()
     locations = Location.objects.all()
 
-
-
     return render(request, 'main/index.html', { "categories" : categories , "images" : images, "locations" : locations} )
 
 def categoryPage(request, category_id):
 
     categories = Category.objects.all()
-
     try:
         
         categories = Image.get_category(category_id)
@@ -24,41 +21,43 @@ def categoryPage(request, category_id):
 
         raise Http404()
         
-        
-
-   
-    # try:
-        
-    #     category = Image.objects.filter()
-
-    # except:
-    #     category = Category.objects.filter().first()  
-    
-    # images = Image.objects.filter (category=category)[:6]
-    # for x in images:
-    #   x.shortDescription = x.description[:100]
-
-    # context = {}
-    # context['categories'] = category
-    # context['images'] = images
-   
-
     return render(request, 'main/category.html', { "categories" : categories} ) 
 
-def imageDetailPage(request):
+def locationPage(request, location_id):
+  
+    locations = Location.objects.all()
+    try:
+        
+        locations = Image.get_location(location_id)
 
-    category = Category.objects.get()  
-    location = Location.objects.get()  
-    image = Image.objects.get()
+    except Image.DoesNotExist:
 
-    context = {}
-    context['category'] = category
-    context['location'] = location
-    context['images'] = image
-    
+        raise Http404()
+        
+    return render(request, 'main/location.html', { "locations" : locations} )     
 
-    return render(request, 'main/image.html', context) 
+def imagePage(request, image_id):
 
+    images = Image.objects.all()
+
+    try:
+        images = Image.get_findImage(image_id)
+
+    except Image.DoesNotExist:
+        raise Http404
+    return render(request, 'main/image.html', {'images': images} )     
+
+def imageDetailPage(request, image_id):
+    pass
+  
+    # descriptions = Image.description.objects.all()
+
+    # try:
+    #     descriptions = Image.get_findImage(image_id)
+
+    # except Image.DoesNotExist:
+    #     raise Http404
+    # return render(request, 'main/image.html', {'descriptions': descriptions} )          
 
 def searchResult(request):
     if 'image' in request.GET and request.GET["image"]:

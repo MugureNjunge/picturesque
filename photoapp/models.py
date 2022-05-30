@@ -35,21 +35,17 @@ class Image(models.Model):
   def getImages(cls):
       allImages = cls.objects.all()
       return allImages
-      
+
+#  find image
   @classmethod
-  def getImagebyId(cls,id):
-      getImage = cls.objects.filter(image_id=id)
-      return getImage
+  def get_findImage(cls,id):
+      findImage = cls.objects.filter(image_id=id)
+      return findImage
 
   @classmethod
-  def filterByLocation(cls,id):
-      imageLocation = cls.objects.filter(location_id=id)
-      return imageLocation
-
-  @classmethod
-  def filter_Category(cls,id):
-      imageCategory = cls.objects.filter(category_id=id)
-      return imageCategory
+  def get_location(cls,id):
+      location = cls.objects.filter(location_id=id)
+      return location
 
   @classmethod
   def get_category(cls,id):
@@ -57,7 +53,7 @@ class Image(models.Model):
       return category
 
 
-  @classmethod
-  def searchImage(cls,search_term):
-      searchedImage = cls.objects.filter(category__name__icontains=search_term)
-      return searchedImage
+#   @classmethod
+#   def searchImage(cls,search_term):
+#       searchedImage = cls.objects.filter(category__name__icontains=search_term)
+#       return searchedImage

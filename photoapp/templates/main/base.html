@@ -121,13 +121,21 @@
         </div>
       </header>
 
-      <!-- <a class="p-2 link-secondary" href="{% url 'image-detail' %}"> img src ="{{ image.squareImage.url }}" </a> -->
-
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
           
           {% for category in categories %}
            <a class="p-2 link-secondary" href="{% url 'image-category' category.id %}">{{ category.title }}</a>
+          
+          {% endfor %}
+
+          {% for location in locations %}
+           <a class="p-2 link-secondary" href="{% url 'image-location' location.id %}">{{ location.title }}</a>
+          
+          {% endfor %}
+
+          {% for image in images %}
+           <a class="p-2 link-secondary" href="{% url 'image-pictures' image.id %}">{{ image.squareImage }}</a>
           
           {% endfor %}
             
