@@ -49,6 +49,10 @@ class Image(models.Model):
       category = cls.objects.filter(category_id=id)
       return category
 
+  @classmethod    
+  def delete_image(cls, image_id):
+      image_to_delete = cls.objects.filter( id=image_id)
+      image_to_delete.delete()
 
   @classmethod
   def searchImage(cls,search_term):
