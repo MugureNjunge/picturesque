@@ -33,12 +33,6 @@ class Image(models.Model):
   def __str__(self):
       return self.imageName
 
-
-  @classmethod
-  def getImages(cls):
-      images = cls.objects.all()
-      return images
-
 #  find image
   @classmethod
   def get_findImage(cls,id):

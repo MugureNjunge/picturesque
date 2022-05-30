@@ -120,9 +120,9 @@
             <a class="blog-header-logo text-dark" href="#">PICTURESQUE</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="link-secondary" href="#" aria-label="Search">
+            <!-- <a class="link-secondary" href="#" aria-label="Search">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-            </a>
+            </a> -->
             
           </div>
         </div>
@@ -130,14 +130,18 @@
 
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-         
+
+         <h5><strong>CATEGORIES</strong></h5>
+            <br>
             {% for category in categories %}
             <a class="p-2 link-secondary" href="{% url 'image-category' category.id %}">{{ category.title }}</a>
             
             {% endfor %}
           
-           <br> <br>
-        
+         
+
+         <h5><strong>LOCATIONS</strong></h5>
+            <br>
             {% for location in locations %}
             <a class="p-2 link-secondary" href="{% url 'image-location' location.id %}">{{ location.title }}</a>
           
@@ -153,7 +157,7 @@
       <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-12 px-0">
           <h4 class="display-4 fst-italic">All my favorite pictures in one place</h4>
-          <p class="lead my-3">Karibu.Here you get to see beautiful pictures I have collected over time .Use the search icon to get pictures from the categories listed above. Do enjoy!</p>
+          <p class="lead my-3">Karibu.Here you get to see beautiful pictures I have collected over time .Tap on any of the icons above that take you to the various categories/ locations in place .Do enjoy!</p>
           
         </div>
       </div>
@@ -168,11 +172,12 @@
             <div class="col mb-4" >
               <div class="card shadow-sm showHover">
       
-                <a href="{% url 'home' %}" style="text-decoration: none;">
+                               
+                  <img src="{{image.squareImage.url}}" class="img-responsive" alt="..."  style="width:360px; height:250px;" >
+
+                  <a href="{% url 'image-details' image.id %}" style="text-decoration: none;" > See more...
                   
-                  <img src="{{image.squareImage.url}}" class="img-responsive" alt="..."  style="width:100%; height:100%;" >
-                  
-                </a> 
+                  </a> 
               </div>  
       
             </div> 
@@ -186,9 +191,9 @@
     </div>
            
 
-    <footer class="blog-footer text-center bg-dark">
+    <footer class="blog-footer text-center bg-dark text-white">
       <p>Copyright @picturesque 2022</p>
-      <p>
+      
         <a href="#">Back to top</a>
       </p>
     </footer>
