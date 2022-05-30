@@ -70,5 +70,18 @@ def searchResult(request):
         message = "You haven't searched for any term"
         return render(request, 'main/search.html',{"message":message})
 
+def search(request):
+    locations = Location.objects.all()
+    categories = Category.objects.all()
+
+    if 'searchedImage' in request.GET and request.GET["searchedImage"]:
+        search_term = request.GET.get("searchedImage")
+        searchedImages = Image.searchImage(search_term)
+        message=f"{search_term}"
+        return render (request, 'art/search.html',{"message":message,"searchedImages": searchedImages, "categories": categories, "locations": locations})
+    else:
+        message = "Kindly add a search item"
+        return render(request, 'search.html',{"message":message, "categories": categories, "locations": locations})        
+
 
 

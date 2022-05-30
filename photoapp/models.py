@@ -19,7 +19,7 @@ class Category(models.Model):
     
 
 class Image(models.Model):
-#   squareImage = ResizedImageField(size=(1000,1000), crop=['middle', 'center'], default='default_square_jpg',upload_to='square')
+
   squareImage = ResizedImageField(size=[2878, 1618], crop=['middle', 'center'], upload_to='square/', blank=True)
   imageName = models.TextField(null=True, blank=True) 
   description = models.TextField(null=True, blank=True)
@@ -53,7 +53,7 @@ class Image(models.Model):
       return category
 
 
-#   @classmethod
-#   def searchImage(cls,search_term):
-#       searchedImage = cls.objects.filter(category__name__icontains=search_term)
-#       return searchedImage
+  @classmethod
+  def searchImage(cls,search_term):
+      searchedImage = cls.objects.filter(category__name__icontains=search_term)
+      return searchedImage
