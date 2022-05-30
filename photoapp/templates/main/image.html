@@ -4,12 +4,12 @@
 
   <div class="container">
     <div class="row">
-      {% for images in images %}
+      
 
       <div class="col-lg-6 col-md-6">
 
-        <a href="{% url 'explore' %}" style="text-decoration: none;">
-          <img src="{{mage.squareImage.url}}" class="img-responsive" alt="..." data-target="#{{image.id}}" style="width:100%; ">
+        <a href="{% url 'home' %}" style="text-decoration: none;">
+          <img src="{{image.squareiImage.url}}" class="img-responsive" alt="..." data-target="#{{image.id}}" style="width:100%; ">
         </a> 
 
       </div> 

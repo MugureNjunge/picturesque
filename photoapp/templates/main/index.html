@@ -156,12 +156,13 @@
       
         <div class="container">
           <div class="row">
-            {% for images in images %}
+            {% for image in images %}
       
             <div class="col-lg-6 col-md-6">
       
               <a href="{% url 'home' %}" style="text-decoration: none;">
-                <img src="{{mage.squareImage.url}}" class="img-responsive" alt="..." data-target="#{{image.id}}" style="width:100%; ">
+                <img src="{{ image.squareImage.url }}" alt="">
+                <p>{{ image.squareImage }}</p>
               </a> 
       
             </div> 

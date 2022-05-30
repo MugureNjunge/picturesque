@@ -4,9 +4,14 @@ from .models import *
 
 
 def home(request):
-    categories = Category.objects.all()
     images = Image.objects.all()
+    categories = Category.objects.all() 
     locations = Location.objects.all()
+
+    try:
+        images = Image.getImages()
+    except Image.DoesNotExist:
+        raise Http404()
 
     return render(request, 'main/index.html', { "categories" : categories , "images" : images, "locations" : locations} )
 
@@ -59,16 +64,6 @@ def imageDetailPage(request, image_id):
     #     raise Http404
     # return render(request, 'main/image.html', {'descriptions': descriptions} )          
 
-def searchResult(request):
-    if 'image' in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
-        searched_images = search_term.split.search_by_title(search_term)
-        message = f"{search_term}"
-        return render(request, 'main/search.html',{"message":message,"articles": searched_images})
-
-    else:
-        message = "You haven't searched for any term"
-        return render(request, 'main/search.html',{"message":message})
 
 def search(request):
     locations = Location.objects.all()
@@ -78,7 +73,7 @@ def search(request):
         search_term = request.GET.get("searchedImage")
         searchedImages = Image.searchImage(search_term)
         message=f"{search_term}"
-        return render (request, 'art/search.html',{"message":message,"searchedImages": searchedImages, "categories": categories, "locations": locations})
+        return render (request, 'main/search.html',{"message":message,"searchedImages": searchedImages, "categories": categories, "locations": locations})
     else:
         message = "Kindly add a search item"
         return render(request, 'search.html',{"message":message, "categories": categories, "locations": locations})        

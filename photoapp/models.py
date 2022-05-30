@@ -20,12 +20,14 @@ class Category(models.Model):
 
 class Image(models.Model):
 
-  squareImage = ResizedImageField(size=[2878, 1618], crop=['middle', 'center'], upload_to='square/', blank=True)
+  squareImage = models.ImageField(upload_to='square/', blank=True)
   imageName = models.TextField(null=True, blank=True) 
   description = models.TextField(null=True, blank=True)
   category = models.ForeignKey(Category,on_delete=models.CASCADE)
   location = models.ForeignKey(Location,on_delete=models.CASCADE)
 
+  def save_image(self):
+    self.save()
 
   def __str__(self):
       return self.imageName
@@ -33,8 +35,8 @@ class Image(models.Model):
 
   @classmethod
   def getImages(cls):
-      allImages = cls.objects.all()
-      return allImages
+      images = cls.objects.all()
+      return images
 
 #  find image
   @classmethod
