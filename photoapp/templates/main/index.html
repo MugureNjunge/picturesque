@@ -3,8 +3,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <meta name="description" content="">
     <meta name="author" content="Maureen Njung'e">
     <meta name="generator" content="Photo Gallery">
@@ -152,7 +155,7 @@
       <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-12 px-0">
           <h4 class="display-4 fst-italic">All my favorite pictures in one place</h4>
-          <p class="lead my-3">Karibu.Here you get to see beautiful pictures I have collected over time .Tap on any of the icons above that take you to the various categories/ locations in place .Also, tap on the 'see more..' link below all pictures to see more dtaails about a particular pic of your liking. Do enjoy!</p>
+          <p class="lead my-3">Karibu.Here you get to see beautiful pictures I have collected over time .Tap on any of the icons above that take you to the various categories/ locations in place .Also, tap on the 'see more..' link below all pictures to see more details about a particular pic of your liking. Do enjoy!</p>
           
         </div>
       </div>
@@ -170,7 +173,12 @@
                                
                   <img src="{{image.squareImage.url}}" class="img-responsive" alt="..."  style="width:360px; height:250px;" >
 
-                  <a href="{% url 'image-details' image.id %}" style="text-decoration: none;" > See more...
+                   <br>
+                  <div class="details text-center">
+
+                    <a href="{% url 'image-details' image.id %}" style="text-decoration: none;" > View more...
+
+                  </div> 
                   
                   </a> 
               </div>  
@@ -186,6 +194,7 @@
 
     <footer class="blog-footer text-center bg-dark text-white">
       <p>Copyright @picturesque 2022</p>
+      <P><strong>Author : Maureen Njung'e</strong></P>
       
         <a href="#">Back to top</a>
       </p>
