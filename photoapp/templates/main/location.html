@@ -8,12 +8,16 @@
 
       <div class="col mb-4">
         <div class="card shadow-sm showHover">
-          <p><strong>{{ location.imageName }}</strong></p>
+          <div class="name text-center" >
+            <p><strong>{{ location.imageName }}</strong></p>
+
+          </div>
          
             <img src="{{ location.squareImage.url}}" class="img-responsive" alt="..." style="width:100%; height:100%;">
-
-        
-            {{ location.description }}
+               <br>
+             
+            <p> {{ location.description }} </p>
+            <br>
         
         </div>
       </div>
