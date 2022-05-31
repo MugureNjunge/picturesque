@@ -10,6 +10,7 @@ Users can search for photos based on categories.
 
 
 **Getting Started**
+
 To clone the repository, run:
 
 git clone https://github.com/MugureNjunge/picturesque
