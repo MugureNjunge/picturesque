@@ -8,19 +8,28 @@
 Picturesque is a Photo Gallery application showcasing a collection of my favourite pictures built using Python - Django.
 
 Users get to view photos uploaded by admin.
+
 Users can see photos based on the location and category, by clicking on the listed icons on the menu as shown in the above diagram.
+
 Users can also copy the link to a photo by right clicking on the diagram and choose the "copy image link" then share said image at their discretion.
 
 
 **BDD**
 
 <img src="./photoapp/static/assets/images/viewpage1.png">
-<br>
 
-|View photos of interest
-|Scroll up and down and click on "view more" below the picture 
-|Get a display of the picture with the name, description ,location and category
-|View pictures by location and category by clicking on the icons on the navbarand get the photo with the description
+<br>
+<img src="./photoapp/static/assets/images/inside.png">
+
+View photos of interest
+
+Scroll up and down and click on "view more" below the picture 
+
+Get a display of the picture with the name, description ,location and category
+
+Copy the link to a photo by right clicking on the diagram and choose the "copy image link" then share said image at their discretion.
+
+View pictures by location and category by clicking on the icons on the navbarand get the photo with the description
 
 
 **Getting Started**
