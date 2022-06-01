@@ -10,13 +10,33 @@ class Location(models.Model):
   def __str__(self):
     return self.title  
 
+  def save_category(self):
+    self.save()
+
+  def delete_category(self):
+    self.delete()
+  
+  def update_category(self, update):
+    self.image_category = update
+    self.save()  
+
 class Category(models.Model):
   title = models.CharField(null=True, blank=True, max_length=200)
  
 
   def __str__(self):
     return self.title
-    
+
+  def save_category(self):
+    self.save()
+
+  def delete_category(self):
+    self.delete()
+  
+  def update_category(self, update):
+    self.photo_category = update
+    self.save()  
+  
 
 class Image(models.Model):
 
@@ -58,3 +78,13 @@ class Image(models.Model):
   def searchImage(cls,search_term):
       searchedImage = cls.objects.filter(category__name__icontains=search_term)
       return searchedImage
+
+  @classmethod
+  def search_by_category(cls,search_term):
+      image = cls.objects.filter(category__name__icontains=search_term)
+      return image 
+
+  @classmethod
+  def search_by_location(cls,search_term):
+      image = cls.objects.filter(location__name__icontains=search_term)
+      return image       
