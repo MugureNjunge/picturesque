@@ -48,18 +48,17 @@ def locationPage(request, location_id):
     return render(request, 'main/location.html', { "locations" : locations} )     
 
 
-def search(request):
-    locations = Location.objects.all()
-    categories = Category.objects.all()
+def search_results(request):
+  
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_by_category(search_term)
+        message = f"{search_term}"
 
-    if 'searchedImage' in request.GET and request.GET["searchedImage"]:
-        search_term = request.GET.get("searchedImage")
-        searchedImages = Image.searchImage(search_term)
-        message=f"{search_term}"
-        return render (request, 'main/search.html',{"message":message,"searchedImages": searchedImages, "categories": categories, "locations": locations})
+        return render(request, 'photoapp/search.html',{"message":message,"images": searched_images})
+
     else:
-        message = "Kindly add a search item"
-        return render(request, 'search.html',{"message":message, "categories": categories, "locations": locations})        
-
+        message = "You haven't searched for any term"
+        return render(request, 'photoapp/search.html',{"message":message})
 
 
