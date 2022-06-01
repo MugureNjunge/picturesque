@@ -55,10 +55,10 @@ def search_results(request):
         searched_images = Image.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'photoapp/search.html',{"message":message,"images": searched_images})
+        return render(request, 'main/search.html',{"message":message,"images": searched_images})
 
     else:
-        message = "You haven't searched for any term"
-        return render(request, 'photoapp/search.html',{"message":message})
+        message = "Try another term"
+        return render(request, 'main/search.html',{"message":message})
 
 
